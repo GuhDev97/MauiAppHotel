@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppHotel.Views.Sobre"
+             Title="Sobre o Aplicativo"
+             NavigationPage.HasNavigationBar="False"
+             Background="{StaticResource Gray100}">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" 
+                             Padding="30" 
+                             VerticalOptions="CenterAndExpand">
+
+            <!-- Ícone / Logótipo -->
+            <Image Source="dotnet_bot.png" 
+                   HeightRequest="150" 
+                   Aspect="AspectFit"
+                   HorizontalOptions="Center" />
+
+            <Label Text="App Hotel" 
+                   FontSize="32" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" 
+                   TextColor="{StaticResource Primary}" />
+
+            <Label Text="Sistema para Gestão e Cálculo de Hospedagem" 
+                   FontSize="16" 
+                   HorizontalOptions="Center" 
+                   TextColor="Gray" />
+
+            <!-- Cartão com Informações do Projeto -->
+            <Frame Padding="20" CornerRadius="12" Margin="0,10">
+                <VerticalStackLayout Spacing="15">
+
+                    <Label Text="Informações do Projeto" 
+                           FontSize="18" 
+                           FontAttributes="Bold" 
+                           TextColor="{StaticResource Primary}" />
+
+                    <BoxView HeightRequest="1" BackgroundColor="{StaticResource Gray200}" />
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="Desenvolvedor:" FontAttributes="Bold" />
+                        <Label Text="Seu Nome Aqui" />
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="Ano de Desenvolvimento:" FontAttributes="Bold" />
+                        <Label Text="2026" />
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Spacing="10">
+                        <Label Text="Tecnologia:" FontAttributes="Bold" />
+                        <Label Text=".NET MAUI (C# / XAML)" />
+                    </HorizontalStackLayout>
+
+                    <Label Text="Desenvolvido como atividade prática para aprofundar conhecimentos em componentes visuais e data binding." 
+                           FontSize="13" 
+                           TextColor="DimGray" 
+                           Margin="0,5,0,0" />
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Botão para fechar a tela -->
+            <Button Text="Voltar" 
+                    BackgroundColor="{StaticResource Primary}" 
+                    TextColor="White" 
+                    Clicked="OnVoltarClicked" 
+                    HorizontalOptions="Fill" 
+                    HeightRequest="50" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
