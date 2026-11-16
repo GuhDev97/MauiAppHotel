@@ -2,31 +2,40 @@
 {
     public class Hospedagem
     {
-
-        public Quarto QuartoSelecionado { get; set;}
-
+        public Quarto? QuartoSelecionado { get; set; }
         public int QntAdultos { get; set; }
-
         public int QntCriancas { get; set; }
-
         public DateTime DataCheckIn { get; set; }
-
         public DateTime DataCheckOut { get; set; }
 
-        public int Estadia
+        // Propriedade que calcula o total de dias da estadia
+        public int TotalDias
         {
-            get => DataCheckOut.Subtract(DataCheckIn).Days;
+            get
+            {
+                int dias = (DataCheckOut - DataCheckIn).Days;
+                return dias > 0 ? dias : 1;
+            }
         }
 
+        // Propriedade que calcula o valor total da hospedagem
         public double ValorTotal
         {
-            get 
+            get
             {
-                double valor_adulto = QntAdultos * QuartoSelecionado.ValorDiariaAdulto;
-                double valor_crianca = QntCriancas * QuartoSelecionado.ValorDiariaCrianca;
+                double valorAdultos = 0;
+                double valorCriancas = 0;
 
-                double total = (valor_adulto + valor_crianca) * Estadia;
-                return (valor_adulto + valor_crianca) * Estadia;    
+                if (QuartoSelecionado != null)
+                {
+                    double precoAdulto = QuartoSelecionado.ValorDiariaAdulto > 0 ? QuartoSelecionado.ValorDiariaAdulto : QuartoSelecionado.ValorDiaria;
+                    double precoCrianca = QuartoSelecionado.ValorDiariaCrianca > 0 ? QuartoSelecionado.ValorDiariaCrianca : QuartoSelecionado.ValorDiaria;
+
+                    valorAdultos = QntAdultos * precoAdulto;
+                    valorCriancas = QntCriancas * precoCrianca;
+                }
+
+                return (valorAdultos + valorCriancas) * TotalDias;
             }
         }
     }

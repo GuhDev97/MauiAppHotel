@@ -1,53 +1,36 @@
 ﻿using MauiAppHotel.Models;
 
+namespace MauiAppHotel;
 
-namespace MauiAppHotel
+public partial class App : Application
 {
-    public partial class App : Application
+    // Lista global de quartos acessível em todo o aplicativo
+    public List<Quarto> lista_quartos { get; set; } = new List<Quarto>
     {
-
-        public List<Quarto> lista_quartos = new List<Quarto>
+        new Quarto()
         {
-            new Quarto()
-            {
-                Descricao = "Suite Super Luxo",
-                ValorDiariaAdulto = 110.00,
-                ValorDiariaCrianca = 50.00
-            },
-            new Quarto()
-            {
-                Descricao = "Suite Luxo",
-                ValorDiariaAdulto = 80.00,
-                ValorDiariaCrianca = 40.00
-            },
-            new Quarto()
-            {
-                Descricao = "Suite Single",
-                ValorDiariaAdulto = 50.00,
-                ValorDiariaCrianca = 25.00
-            },
-            new Quarto()
-            {
-                Descricao = "Suíte Crise",
-                ValorDiariaAdulto = 25.00,
-                ValorDiariaCrianca = 12.50
-            }
-        };
-
-        public App()
+            Descricao = "Suíte Luxo",
+            ValorDiariaAdulto = 150.0,
+            ValorDiariaCrianca = 75.0
+        },
+        new Quarto()
         {
-            InitializeComponent();
-
-            MainPage = new NavigationPage(new Views.ContratacaoHospedagem());
+            Descricao = "Suíte Executiva",
+            ValorDiariaAdulto = 100.0,
+            ValorDiariaCrianca = 50.0
+        },
+        new Quarto()
+        {
+            Descricao = "Suíte Simples",
+            ValorDiariaAdulto = 70.0,
+            ValorDiariaCrianca = 35.0
         }
+    };
 
-        protected override Window CreateWindow(IActivationState? activationState)
-        {
-            var window = base.CreateWindow(activationState);
+    public App()
+    {
+        InitializeComponent();
 
-            window.Width = 400;
-            window.Height = 600;
-            return window;
-        }
+        MainPage = new NavigationPage(new Views.ContratacaoHospedagem());
     }
 }
